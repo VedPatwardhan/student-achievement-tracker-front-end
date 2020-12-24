@@ -1,0 +1,38 @@
+ul {
+ margin: 0px;
+ padding: 0px;
+ list-style: none;
+ align-self: center;
+ font-family: arial;
+}
+
+ul li {
+ float: left;
+ 
+ width: 303.5px;
+ height: 40px;
+ background: black;
+ opacity: 0.9;
+ line-height: 40px;
+ text-align: center;
+ font-size: 22px;
+}
+
+ul li a {
+ text-decoration: none;
+ color: white;
+ display: block;
+}
+
+ul li a:hover {
+ background-color: grey;
+  color: white;
+}
+
+ul li ul li{
+ display: none;
+}
+
+ul li:hover ul li {
+ display: block;
+}
