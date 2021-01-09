@@ -506,7 +506,7 @@ http://www.templatemo.com/tm-509-hydro
       BLOG             
   -----------------------------------------*/
 
-  #blog {
+  #blog{
     background: #f0f0f0;
   }
 
@@ -1136,7 +1136,13 @@ http://www.templatemo.com/tm-509-hydro
   margin-bottom: 40px;
   font-size: 22px;
   font-weight: bold;
-  border-radius: 10%;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+}
+
+.form-ele2{
+  font-weight: bold;
+  border-radius: 20%;
   background-color: #f1f1f1;
 }
 
