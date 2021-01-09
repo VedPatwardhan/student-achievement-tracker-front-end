@@ -1,0 +1,19 @@
+{
+  "name": "student-achievement-tracker-front-end-full-version-1-3.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VedPatwardhan/student-achievement-tracker-front-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VedPatwardhan/student-achievement-tracker-front-end/issues"
+  },
+  "homepage": "https://github.com/VedPatwardhan/student-achievement-tracker-front-end#readme"
+}
