@@ -1,4 +1,7 @@
 body{
+    background-color: #f0f0f0;
+}
+.new-section{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
 .emp-profile{
@@ -116,4 +119,6 @@ body{
 {
     margin-bottom: 20px;
 }
-#blog
+.top-space{
+    padding-top: 50px;
+}

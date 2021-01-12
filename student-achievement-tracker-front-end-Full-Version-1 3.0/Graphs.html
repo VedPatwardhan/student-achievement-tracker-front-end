@@ -47,10 +47,12 @@
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-nav-first">
-                         <li><a href="#home" class="nav_ele">Home</a></li>
-                         <li><a href="#about" class="nav_ele">Graph Analysis</a></li>
-                         <li><a href="#contact" class="nav_ele">Contacts</a></li>
-                         <li><a href="#contact" class="nav_ele">Profile</a></li>
+                         <li><a href="#home" class="smoothScroll">Home</a></li>
+                         <li><a href="#about" class="smoothScroll">Graph Analysis</a></li>
+                         <li><a href="#contact" class="smoothScroll">Profile</a></li>
+                         <li><a href="#contact" class="smoothScroll">Student</a></li>
+                         <li><a href="#contact" class="smoothScroll">Authority</a></li>
+                         <li><a href="#contact" class="smoothScroll">Logout</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -63,8 +65,10 @@
                
           </div>
      </section>
-     <section class="section1">
-          <h1>Graphs</h1>
+     <section id="section1">
+          <div class="top-space">
+               <h1>Graph Analysis</h1>
+          </div>
      </section>
 
 
@@ -97,208 +101,264 @@
      
 
      <!-- BLOG -->
-     <section id="blog" class="gap" data-stellar-background-ratio="0.5">
-          <div class="container">
-               <div class="row">
+     <!-- ABOUT -->
+     <section id="blog" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
 
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Art</h2>
-                              <span class="line-bar">...</span>
-                         </div>
-                    </div>
+                 <div class="col">
+                      <div class="section-title">
+                           <div class="section-title">
+                                <h2>Graphs</h2>
+                                <span class="line-bar">...</span>
+                           </div>
+                      </div>
+                 </div>
+                 
+                 <div id="slide">
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="art_graph1">
-                              
-                         </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="art_graph2">
-                              
-                         </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 last">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="art_graph3">
-                              
-                         </div>
-                    </div>
+                      <div class="mySlides">
+                           <div class="col-md-12 col-sm-12">
+                                <div class="section-title">
+                                     <h3 class="head">Art</h3>
+                                     <span class="line-bar head">...</span>
+                                </div>
+                           </div>
 
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Competitive Coding</h2>
-                              <span class="line-bar">...</span>
-                         </div>
-                    </div>
+                           <div class="col-md-6 col-sm-6 shrink">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="art_graph1">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="cp_graph1">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-6 col-sm-6 shrink">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="art_graph2">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="cp_graph2">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-12 col-sm-12 shrink last">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="art_graph3">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-12 col-sm-12 last">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="cp_graph3">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                      </div>
 
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Internships</h2>
-                              <span class="line-bar">...</span>
-                         </div>
-                    </div>
+                      <div class="mySlides">
+                           <div class="col-md-12 col-sm-12">
+                                <div class="section-title">
+                                     <h3 class="head">Competitive Coding</h3>
+                                     <span class="line-bar head">...</span>
+                                </div>
+                           </div>
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="internship_graph1">
-                              
-                         </div>
-                    </div>
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="cp_graph1">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="internship_graph2">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="cp_graph2">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-12 col-sm-12 last">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="internship_graph3">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-12 col-sm-12 last">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="cp_graph3">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Paper Presentation</h2>
-                              <span class="line-bar">...</span>
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                      </div>
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="pp_graph1">
-                              
-                         </div>
-                    </div>
+                      <div class="mySlides">
+                           <div class="col-md-12 col-sm-12">
+                                <div class="section-title">
+                                     <h3 class="head">Internships</h3>
+                                     <span class="line-bar head">...</span>
+                                </div>
+                           </div>
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="pp_graph2">
-                              
-                         </div>
-                    </div>
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="internship_graph1">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-12 col-sm-12 last">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="pp_graph3">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="internship_graph2">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Project Competiiton</h2>
-                              <span class="line-bar">...</span>
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-12 col-sm-12 last">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="internship_graph3">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="project_graph1">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                      </div>
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="project_graph2">
-                              
-                         </div>
-                    </div>
+                      <div class="mySlides">
+                           <div class="col-md-12 col-sm-12">
+                                <div class="section-title">
+                                     <h3 class="head">Paper Presentation</h3>
+                                     <span class="line-bar head">...</span>
+                                </div>
+                           </div>
 
-                    <div class="col-md-12 col-sm-12 last">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="project_graph3">
-                              
-                         </div>
-                    </div>
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="pp_graph1">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Social Work</h2>
-                              <span class="line-bar">...</span>
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="pp_graph2">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="social_graph1">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-12 col-sm-12 last">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="pp_graph3">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="social_graph2">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                      </div>
 
-                    <div class="col-md-12 col-sm-12 last">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="social_graph3">
-                              
-                         </div>
-                    </div>
+                      <div class="mySlides">
+                           <div class="col-md-12 col-sm-12">
+                                <div class="section-title">
+                                     <h3 class="head">Project Competition</h3>
+                                     <span class="line-bar head">...</span>
+                                </div>
+                           </div>
 
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Sports</h2>
-                              <span class="line-bar">...</span>
-                         </div>
-                    </div>
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="project_graph1">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="sports_graph1">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="project_graph2">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-6 col-sm-6">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="sports_graph2">
-                              
-                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-12 col-sm-12 last">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="project_graph3">
+                                    <div class="media-object media-left">
 
-                    <div class="col-md-12 col-sm-12 last">
-                         <!-- BLOG THUMB -->
-                         <div class="media blog-thumb" id="sports_graph3">
-                              
-                         </div>
-                    </div>
-                    
-               </div>
-          </div>
+                                    </div>
+                                </div>
+                           </div>
+                      </div>
+
+                      <div class="mySlides">
+                           <div class="col-md-12 col-sm-12">
+                                <div class="section-title">
+                                     <h3 class="head">Social Work</h3>
+                                     <span class="line-bar head">...</span>
+                                </div>
+                           </div>
+
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="social_graph1">
+                                    <div class="media-object media-left">
+
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="social_graph2">
+                                    <div class="media-object media-left">
+
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-12 col-sm-12 last">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="social_graph3">
+                                    <div class="media-object media-left">
+
+                                    </div>
+                                </div>
+                           </div>
+                      </div>
+
+                      <div class="mySlides">
+                           <div class="col-md-12 col-sm-12">
+                                <div class="section-title">
+                                     <h3 class="head">Sports</h3>
+                                     <span class="line-bar head">...</span>
+                                </div>
+                           </div>
+
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="sports_graph1">
+                                    <div class="media-object media-left">
+
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-6 col-sm-6">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="sports_graph2">
+                                    <div class="media-object media-left">
+
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="col-md-12 col-sm-12 last">
+                                <!-- BLOG THUMB -->
+                                <div class="media blog-thumb" id="sports_graph3">
+                                    <div class="media-object media-left">
+
+                                    </div>
+                                </div>
+                           </div>
+                      </div>
+            </div>
+
+       </div>
+  </div>
      </section>
-
 
      <!-- WORK -->
 

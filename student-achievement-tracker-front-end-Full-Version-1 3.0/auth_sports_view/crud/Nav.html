@@ -12,24 +12,20 @@
   <body>
 
     <nav class="navbar navbar-expand-custom navbar-light darker">
-        <a class="navbar-brand gap extra1" href="#">Home</a>
+        <a class="navbar-brand gap" href="#">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <a class="nav-link gap1" href="#">Show All Students</a>
+            <li class="nav-item gap2">
+              <a class="nav-link" href="#">Show All Students</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link gap1" href="#">Graph Analysis</a>
+            <li class="nav-item gap2">
+              <a class="nav-link extra" href="#">Graph Analysis</a>
             </li>
-            
-          <li class="nav-item">
-            <a class="nav-link gap1 extra" href="#">Contact Us</a>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item gap2">
             <form class="form" action="sports_dept.php?ID=<?php echo urlencode($id)?>&flag=<?php echo urlencode($flag)?>&sql_search=<?php echo urlencode($sql_search)?>" method="post" enctype="multipart/form-data" >
            <input list="search1" type="text" name="dept" id="srch1" class="input-field" autocomplete="off" placeholder="Department" required >
             <datalist id="search1">
@@ -38,7 +34,7 @@
               <option  value="IT">IT</option>
               <option  value="ENTC">ENTC</option>
               </select>  
-            </datalist>
+            </datalist><br>
         
            <input list="search2" type="text" name="year" id="srch2" class="input-field" autocomplete="off" placeholder="Year" >
             <datalist id="search2">
@@ -48,11 +44,11 @@
               <option  value="TE">TE</option>
               <option  value="BE">BE</option>
               </select>  
-            </datalist>
+            </datalist><br>
          
-            <input name="division" type="number" class="input-field" placeholder="Div(1/2/3..)" >
+            <input name="division" type="number" class="input-field" placeholder="Div(1/2/3..)" ><br>
          
-            <button type="submit" class="form-button" ></span><i class="fa fa-search"></i>
+            <button type="submit" class="form-button extra" ></span><i class="fa fa-search"></i>
               </button>         
         </form>
           </li>
@@ -69,18 +65,7 @@
               <a class="dropdown-item" href="#">Link 6</a>
             </div>
           </li> -->
-          </ul>
-        </div>
-      </nav>
-
-      <nav class="navbar navbar-expand-custom navbar-light lighter">
-      	<a class="navbar-brand gap" href="#">Custom Search</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo04" aria-controls="navbarTogglerDemo04" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo04">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item">
+          <li class="nav-item gap2">
 	        <form class="form" action="sports_search.php?ID=<?php echo urlencode($id)?>&flag=<?php echo urlencode($flag)?>&sql_dept=<?php echo urlencode($sql_dept)?>" method="post" enctype="multipart/form-data" >
 	        <input list="search" name="search" id="srch" onchange="myFunction(this)" class="input-field center" autocomplete="off" placeholder="Search By">
 	            <datalist id="search">
@@ -94,41 +79,44 @@
 	              </select>     
 	            </datalist>
 	          <div class="input-group" id="ID" style="display: none;">
-	            <input name="regid" type="text" placeholder="Enter Reg. ID" class="input-field">
+	            <input name="regid" type="text" placeholder="Enter Reg. ID" class="input-field"><br>
 	              <button  type="submit" class="form-button"></span><i class="fa fa-search"></i>
 	              </button>
 	          </div> 
 	          <div id="Spt" style="display: none;">
-	            <input name="sports_n" type="text" placeholder="Enter Sports Name" class="input-field">
+	            <input name="sports_n" type="text" placeholder="Enter Sports Name" class="input-field"><br>
 	            <button type="submit" class="form-button" ></span><i class="fa fa-search"></i>
               </button>
 	          </div>
 	          <div id="Ven" style="display: none;">
-	            <input name="venue" type="text" placeholder="Enter Venue" class="input-field">
+	            <input name="venue" type="text" placeholder="Enter Venue" class="input-field"><br>
 	            <button type="submit" class="form-button" ></span><i class="fa fa-search"></i>
               </button>
 	          </div> 
 	          <div id="Achiv" style="display: none;">
-	            <input name="achievements" type="text" placeholder="Enter Achievements" class="input-field">
+	            <input name="achievements" type="text" placeholder="Enter Achievements" class="input-field"><br>
 	            <button type="submit" class="form-button" ></span><i class="fa fa-search"></i>
               </button>
 	          </div> 
 	          <div id="Descp" style="display: none;">
-	            <input name="desc" type="text" placeholder="Enter Description" class="input-field">
+	            <input name="desc" type="text" placeholder="Enter Description" class="input-field"><br>
 	            <button type="submit" class="form-button" ></span><i class="fa fa-search"></i>
               </button>
 	          </div> 
 	          <li class="nav-item" >
-	          <div id="date" style="display: none;width: 900px;">
-	            <label for="df">Date From</label>
+	          <div id="date" style="display: none;">
+	            <label for="df" class="label">Date From: </label>
 	            <input id="df_id" type="date" name="df" class="input-field"><br>
-	            <label for="df">Date To &emsp;</label>
-	            <input id="dt_id" type="date" name="dt" class="input-field">
+	            <label for="df" class="label">Date To: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+	            <input id="dt_id" type="date" name="dt" class="input-field"><br>
 	            <button type="submit" class="form-button" ></span><i class="fa fa-search"></i>
               </button>
 	          </div>
 	        </li>
 	       </form> 
+	      </li>
+	      <li class="gap2">
+	      	<button type="submit" class="form-button1">Print Preview</button>
 	      </li>
 	  </ul>
 	  </div>

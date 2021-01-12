@@ -1,4 +1,4 @@
-@media (min-width: 1340px){
+@media (min-width: 1250px){
     .navbar-expand-custom {
         flex-direction: row;
         flex-wrap: nowrap;
@@ -13,6 +13,7 @@
     }
     .navbar-expand-custom .navbar-collapse {
         display: flex!important;
+        justify-content: space-between;
     }
     .navbar-expand-custom .navbar-toggler {
         display: none;
@@ -26,17 +27,19 @@ ul li a{
     margin-right: 10px;
 }
 .gap{
-	margin-right: 40px;
+	margin-right: 80px;
 }
 .form{
   margin-top: 15px;
 }
 .extra{
-	margin-right: 60px;
+	margin-right: 20px;
 }
 .input-field{
 	border-radius: 10px;
-	margin-right: 10px;
+	margin-right: 50px;
+    margin-bottom: 5px;
+    width: 120px;
     padding: 3px;
 	border: 0;
 }
@@ -45,7 +48,7 @@ ul li a{
 }
 
 .extra1{
-    margin-right: 125px;
+    margin-right: 100px;
 }
 
 .darker{
@@ -57,7 +60,19 @@ ul li a{
 }
 
 .gap1{
-	margin-top: 10px;
+	margin-top: 62px;
+    margin-right: 50px;
+}
+
+.gap2{
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+
+
+.label{
+    color: rgba(0,0,0,0.5);
 }
 
 .form-button{
@@ -66,5 +81,14 @@ ul li a{
 	border-radius: 50%;
 	border: 0;
 	background-color: white;
+    display: inline;
+}
+
+.form-button1{
+    width: 120px;
+    height: 30px;
+    border-radius: 10px;
+    border: 0;
+    background-color: white;
     display: inline;
 }

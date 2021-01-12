@@ -8,12 +8,16 @@ body{
 
 .mySlides{
 	/*background-color: #f1f1f1;*/
-	width: 100%;
+/*	width: 100%;
 	height: 500px;
 	margin-bottom: 10px;
-	display: flex;
+	display: flex;*/
 }
 
 .head{
 	text-align: center;
+}
+
+.top-space{
+	padding-top: 50px;
 }

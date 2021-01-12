@@ -1142,7 +1142,7 @@ http://www.templatemo.com/tm-509-hydro
 
 .form-ele2{
   font-weight: bold;
-  border-radius: 20%;
+  border-radius: 10px;
   background-color: #f1f1f1;
 }
 
@@ -1152,4 +1152,8 @@ http://www.templatemo.com/tm-509-hydro
 
 .gap1{
   margin-left: 0%;
+}
+
+.shrink{
+  flex-shrink: 1;
 }
