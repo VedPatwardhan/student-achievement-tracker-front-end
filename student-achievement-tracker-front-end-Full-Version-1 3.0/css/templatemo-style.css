@@ -1157,3 +1157,9 @@ http://www.templatemo.com/tm-509-hydro
 .shrink{
   flex-shrink: 1;
 }
+
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
