@@ -12,6 +12,11 @@ body {
     align-items: center;
 }
 
+.bg-pict {
+    background:url(https://aglasem-cdn.s3.ap-south-1.amazonaws.com/college/college-images/pune-institute-of-computer-technology--pict-pune.jpg) no-repeat center;
+    
+}
+
 .login-box {
     width: 100%;
     margin-top: 50px;
