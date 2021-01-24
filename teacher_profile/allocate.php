@@ -1,14 +1,13 @@
 <?php
 
 session_start();
-if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
-    header("location: Auth_login.php");
-    exit;
-}
+if(isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] == true || isset($_SESSION["login_admin"]) || $_SESSION["login_admin"] == true){
 
 $aid = isset($_SESSION['AID']) ? $_SESSION['AID'] : '';
-
+$Dept = $_SESSION['Dept'];
 $id='';
+$sql='';
+$result='';
         $usernm="root";
         $passwd="";
         $host="localhost";
@@ -20,7 +19,14 @@ $id='';
            die("Connection failed: " . mysqli_connect_error());
 }
 
-        $sql = "SELECT * FROM  authority  ";
+        if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
+           $sql = "SELECT * FROM  authority ";          
+
+        }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+           $sql = "SELECT * FROM  authority WHERE Department ='$Dept' ";
+
+        }   
+
         $result = mysqli_query ($conn,$sql) or die ('Error');
          
  ?>
@@ -96,5 +102,16 @@ $id='';
 
 
 <?php
+}else{
+  if($_SESSION['login_flag'] == 2){
+        header("location: ../Authority_login.php");
+        exit;
+    }
 
-?>
+    else if($_SESSION['login_flag'] == 3){
+        header("location: ../Admin_login.php");
+        exit;
+    }
+    
+    
+}
