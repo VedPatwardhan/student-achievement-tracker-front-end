@@ -2,7 +2,7 @@
 require 'db.php';
 session_start();
 if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
-    header("location: ../../Authority_login.php");
+    header("location: ../../Authority_login.html");
     exit;
 }
 $id = $_SESSION['AID'];

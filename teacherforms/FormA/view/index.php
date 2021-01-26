@@ -28,12 +28,12 @@ header("location:calculate.php");
 
 }else{
 	if($_SESSION['login_flag'] == 2){
-        header("location: ../Authority_login.php");
+        header("location: ../../../Authority_login.html");
         exit;
     }
 
     else if($_SESSION['login_flag'] == 3){
-        header("location: ../Admin_login.php");
+        header("location: ../../../Admin_login.html");
         exit;
     }
     

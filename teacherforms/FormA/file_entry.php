@@ -2,7 +2,7 @@
 require 'db.php';
 session_start();
 if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
-    header("location: ../../Authority_login.php");
+    header("location: ../../Authority_login.html");
     exit;
 }
 $id = $_SESSION['AID'];
@@ -48,7 +48,7 @@ else{
   </head>
   <body class="bg-info">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/projects/Auth_page1.php">Home</a>
+  <a class="navbar-brand" href="../../Authority_Home.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

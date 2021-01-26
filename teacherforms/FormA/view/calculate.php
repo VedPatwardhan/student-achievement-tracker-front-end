@@ -69,9 +69,9 @@ th a i {
   
     <nav class="navbar navbar-expand-custom navbar-light darker">
       <?php if($_SESSION['login_flag'] == 3){ ?>
-      <a class="navbar-brand gap" href="/projects/admin/admin_page1.php">Home</a>
+      <a class="navbar-brand gap" href="../../../Admin_Home.php">Home</a>
       <?php  }else if($_SESSION['login_flag'] == 2){  ?>
-        <a class="navbar-brand gap" href="/projects/Auth_page1.php">Home</a>
+        <a class="navbar-brand gap" href="../../../Authority_Home.php">Home</a>
       <?php } ?>
     
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -349,7 +349,7 @@ $('.navbar-light .dmenu').hover(function () {
             <td><?= $person->Remarks; ?></td>
             <td><?= $person->Date_start; ?></td>   
             <td><?= $person->Date_end; ?></td> 
-            <td><a href="../../file/solo_download.php?ID=<?php echo $person->ID?>&uid=<?php echo $person->UID?>" style="margin:5%;font-size: 14px;" >Download</a></td>
+            <td><a href="../../../file/solo_download.php?ID=<?php echo $person->ID?>&uid=<?php echo $person->UID?>" style="margin:5%;font-size: 14px;" >Download</a></td>
           </tr>
         <?php endforeach; ?>
        </tbody>
@@ -360,12 +360,12 @@ $('.navbar-light .dmenu').hover(function () {
 <?php require 'footer.php'; 
   }else{
     if($_SESSION['login_flag'] == 2){
-        header("location: ../Authority_login.php");
+        header("location: ../../../Authority_login.html");
         exit;
     }
 
     else if($_SESSION['login_flag'] == 3){
-        header("location: ../Admin_login.php");
+        header("location: ../../../Admin_login.html");
         exit;
     }
 

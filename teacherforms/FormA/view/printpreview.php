@@ -12,8 +12,8 @@ $people =$_SESSION['people'];
 <html>
 <head>
 	<title>FormA Print</title>
-	 <link rel="stylesheet" type="text/css" href="print.css" media="print" />
-    <link rel="stylesheet" type="text/css" href="printpreview.css"  />
+	 <link rel="stylesheet" type="text/css" href="../../../css/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="../../../css/printpreview.css"  />
 
 </head>
 <body>
@@ -71,12 +71,12 @@ $people =$_SESSION['people'];
 
 <?php }else{
   if($_SESSION['login_flag'] == 2){
-        header("location: ../Authority_login.php");
+        header("location: ../../../Authority_login.html");
         exit;
     }
 
     else if($_SESSION['login_flag'] == 3){
-        header("location: ../Admin_login.php");
+        header("location: ../../../Admin_login.html");
         exit;
     }
     
