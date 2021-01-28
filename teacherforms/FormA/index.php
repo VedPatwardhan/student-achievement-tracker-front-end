@@ -12,6 +12,8 @@ $desc ='';
 $venue ='';
 $ach ='';
 $uid ='';
+$_SESSION['type']='FormA';
+$_SESSION['flag_file']=2;
 
         $sql = "SELECT * FROM formA WHERE ID = '$id'";
         $result = mysqli_query ($conn,$sql) or die ('Error');
@@ -119,7 +121,7 @@ $uid ='';
             ?>
 
             <td>
-              <form  action="../../file/filesLogic.php?uid=<?php echo $uid?>&type=formA&flag_file=2" method="post" enctype="multipart/form-data" > 
+              <form  action="../../file/filesLogic.php?uid=<?php echo $uid?>" method="post" enctype="multipart/form-data" > 
                   <input type="file" name="myfile" id="file" >
                    <button style="margin:5%;" type="submit" name="save" class="btn btn-info">Submit</button>
               </form>
@@ -127,8 +129,8 @@ $uid ='';
             <?php }else{ ?>
             <td >  
               <div>                        
-                <form action="../../file/filesLogic.php?uid=<?php echo $uid?>&type=formA&flag_file=2" method="post" enctype="multipart/form-data" >
-                 <a href="../../file/solo_download.php?uid=<?php echo $uid?>&type=formA&flag_file=2" style="margin:5%;" class="btn btn-info">Download latest copy</a>
+                <form action="../../file/filesLogic.php?uid=<?php echo $uid?>" method="post" enctype="multipart/form-data" >
+                 <a href="../../file/solo_download.php?uid=<?php echo $uid?>" style="margin:5%;" class="btn btn-info">Download latest copy</a>
                   <input type="file" name="myfile" >
                   <button style="margin-top:5%;" type="submit" name="save1" class="btn btn-info">Upload New</button>
                 </form>

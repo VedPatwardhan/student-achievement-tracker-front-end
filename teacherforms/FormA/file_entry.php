@@ -6,7 +6,8 @@ if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
     exit;
 }
 $id = $_SESSION['AID'];
-
+$_SESSION['type']='FormA';
+$_SESSION['flag_file']=2;
 $filename='';
 
 if (isset ($_POST['activity'])  && isset($_POST['title']) && isset($_POST['venue']) && isset($_POST['sponsor'])  && isset($_POST['DO']) && isset($_POST['DE']) && isset($_POST['participant']) && isset($_POST['coordinator']) && isset($_POST['remark']) ) {
@@ -77,7 +78,7 @@ else{
         </div>
       <?php endif; ?>
      
-       <form  action="../../file/filesLogic.php?uid=<?php echo $uid?>&type=formA&flag_file=2" method="post" enctype="multipart/form-data" > 
+       <form  action="../../file/filesLogic.php?uid=<?php echo $uid?>" method="post" enctype="multipart/form-data" > 
                   <input type="file" name="myfile" id="file" >
                    <button style="margin:5%;" type="submit" name="save" class="btn btn-info">Submit</button>
         </form> 
