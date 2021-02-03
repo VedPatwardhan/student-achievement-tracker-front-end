@@ -2,12 +2,13 @@
 require 'db.php';
 session_start();
 if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
-    header("location: ../../Authority_login.html");
+    header("location: ../../index.html");
     exit;
 }
 $id = $_SESSION['AID'];
-$_SESSION['type']='FormA';
-$_SESSION['flag_file']=2;
+$_SESSION['type'] = 'formA';
+$_SESSION['flag_file'] = 2; 
+
 $filename='';
 
 if (isset ($_POST['activity'])  && isset($_POST['title']) && isset($_POST['venue']) && isset($_POST['sponsor'])  && isset($_POST['DO']) && isset($_POST['DE']) && isset($_POST['participant']) && isset($_POST['coordinator']) && isset($_POST['remark']) ) {
@@ -24,7 +25,7 @@ if (isset ($_POST['activity'])  && isset($_POST['title']) && isset($_POST['venue
   $ds = date('Y-m-d',strtotime($rawdate));
   $de = date('Y-m-d',strtotime($rawdate1));
   $uid = uniqid("FA-");
-  $sql = 'INSERT INTO formA(UID,ID,Activity,Title,State,Sponsor,Participants,Coordinator,Remarks,Date_start,Date_end) VALUES(:uid,:id,:activity,:title,:venue,:sponsor,:dob,:participant,:coordinator,:remark,:ds,:de)';
+  $sql = 'INSERT INTO formA(UID,ID,Activity,Title,State,Sponsor,Participants,Coordinator,Remarks,Date_start,Date_end) VALUES(:uid,:id,:activity,:title,:venue,:sponsor,:participant,:coordinator,:remark,:ds,:de)';
   $statement = $connection->prepare($sql);
   if ($statement->execute([':uid' => $uid,':id' => $id,':activity' => $activity,':title' => $title,':venue' => $venue,':sponsor' => $sponsor,':participant'=>$participant,':coordinator'=>$coordinator,':remark'=>$remark,':ds'=>$ds,':de'=>$de])) {
     $message = 'data inserted successfully';
@@ -78,7 +79,7 @@ else{
         </div>
       <?php endif; ?>
      
-       <form  action="../../file/filesLogic.php?uid=<?php echo $uid?>" method="post" enctype="multipart/form-data" > 
+       <form  action="../../file/filesLogic.php?uid=<?php echo $uid?>&type=formA&flag_file=2" method="post" enctype="multipart/form-data" > 
                   <input type="file" name="myfile" id="file" >
                    <button style="margin:5%;" type="submit" name="save" class="btn btn-info">Submit</button>
         </form> 

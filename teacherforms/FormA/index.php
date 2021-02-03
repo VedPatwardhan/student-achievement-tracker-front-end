@@ -2,18 +2,18 @@
 require 'db.php';
 session_start();
 if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
-    header("location: ../../Authority_login.html");
+    header("location: ../../index.html");
     exit;
 }
 
 $id = $_SESSION['AID'];
+$_SESSION['type'] = 'formA';
+$_SESSION['flag_file'] = 2; 
 $type ='';
 $desc ='';
 $venue ='';
 $ach ='';
 $uid ='';
-$_SESSION['type']='FormA';
-$_SESSION['flag_file']=2;
 
         $sql = "SELECT * FROM formA WHERE ID = '$id'";
         $result = mysqli_query ($conn,$sql) or die ('Error');
