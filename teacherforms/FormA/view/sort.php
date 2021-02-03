@@ -23,7 +23,7 @@ $sql='';
     if($flag == 0){
       if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
         $sql='SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID ORDER BY '.$column.' '.$sort_order;
-      }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+      }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
         $sql="SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID WHERE at.Department ='$dept' ORDER BY  ".$column." ".$sort_order;
       }
     $statement = $connection->prepare($sql);
@@ -37,7 +37,7 @@ $sql='';
   elseif($flag == 1){
     if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
       $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where $sql_search ORDER BY ".$column." ".$sort_order;
-    }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+    }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
       $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID WHERE at.Department ='$dept' AND $sql_search ORDER BY ".$column." ".$sort_order;
     }
     //echo $sql;
@@ -51,7 +51,7 @@ $sql='';
   elseif($flag == 2){
     if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
       $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where $sql_dept ORDER BY ".$column." ".$sort_order;
-    }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+    }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
       $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID WHERE at.Department ='$dept' AND $sql_dept ORDER BY ".$column." ".$sort_order;
     }
     //echo $sql;
@@ -65,7 +65,7 @@ $sql='';
   elseif($flag == 21 || $flag == 12){
     if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
       $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where $sql_search AND $sql_dept ORDER BY ".$column." ".$sort_order;
-    }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+    }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
       $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID WHERE at.Department ='$dept' AND $sql_search AND $sql_dept ORDER BY ".$column." ".$sort_order;
     }
 
@@ -80,7 +80,7 @@ $sql='';
 
 }else{
   if($_SESSION['login_flag'] == 2){
-        header("location: ../../../Authority_login.html");
+        header("location: ../../../index.html");
         exit;
     }
 

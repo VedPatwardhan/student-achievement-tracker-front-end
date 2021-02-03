@@ -8,12 +8,13 @@ $dept = isset($_GET['Dept']) ? $_GET['Dept'] : $_SESSION['Dept'];
 $dsg = isset($_SESSION['Desg']) ? $_SESSION['Desg'] : '';
 $sql = '';
 $print ='';
+$_SESSION['flag'] = 0;
 
 	if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
 		$sql = 'SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID';
 		$print ='FormA:- All Teachers';
 	}
-	else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+	else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
 		$sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID WHERE at.Department ='$dept'";
 		$print ='FormA:- '.$dept.' Department';
 	}
@@ -28,7 +29,7 @@ header("location:calculate.php");
 
 }else{
 	if($_SESSION['login_flag'] == 2){
-        header("location: ../../../Authority_login.html");
+        header("location: ../../../index.html");
         exit;
     }
 

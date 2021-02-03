@@ -14,6 +14,7 @@ $print = isset($_SESSION['print']) ? $_SESSION ['print'] : 'FormA:- All Teachers
 $sql_search = '';
 $sql_dept = '';
 $_SESSION['flag'] = $flag;
+
   if($flag == 1){
     $sql_search = isset($_SESSION['sql_search']) ? $_SESSION['sql_search'] : '';
     
@@ -80,14 +81,23 @@ th a i {
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item gap2">
+              <a class="nav-link" href="../../../teachers.php">Back</a>
+            </li>
+            
+            <?php if($_SESSION['login_flag'] == 2 && isset($_SESSION['CH'])){  ?>
+              <li class="nav-item gap2">
+              <a class="nav-link" href="create.php">Add Achievement</a>
+            </li>
+            <?php } ?>
+            
             <li class="nav-item gap2">
               <a class="nav-link" href="index.php">Show All Teachers</a>
             </li>
-      
            
           <li class="nav-item gap2">
             <form class="form" action="dept.php?sql_search=<?php echo urlencode($sql_search)?>" method="post" enctype="multipart/form-data" >
-              <?php if($_SESSION['Desg'] != 'HOD'){ ?>
+              <?php if($_SESSION['login_flag'] == 3 || $_SESSION['Desg'] == 'Principal'){ ?>
            <input list="search1" type="text" name="dept" id="srch1" class="input-field" autocomplete="off" placeholder="Department" required >
             <datalist id="search1">
               <select  name="search1" id="searchs1">
@@ -178,8 +188,12 @@ th a i {
           
         </li>
 
-         <li class="nav-item gap2">
-              <a class="nav-link extra" href="#">Logout</a>
+        <li class="nav-item gap2">
+          <?php if($_SESSION['login_flag'] == 2){ ?>
+              <a class="nav-link extra" href="../logout_auth.php">Logout</a>
+          <?php }else if($_SESSION['login_flag'] == 3){ ?>
+              <a class="nav-link extra" href="../logout_admin.php">Logout</a>
+          <?php } ?>
          </li>
     </ul>
     
@@ -249,6 +263,10 @@ $('.navbar-light .dmenu').hover(function () {
       <table class="table table-bordered">
        <thead>
         <tr style="font-size: 14.3px;">
+          <?php if($_SESSION['login_flag'] == 2 && isset($_SESSION['CH'])){  ?>
+          <th> </th>
+          <?php } ?>
+          
           <th style="width: 130px;" >
             <form action="session_m.php" method="post">
             <input type="hidden" name="column" value="ID">
@@ -330,11 +348,21 @@ $('.navbar-light .dmenu').hover(function () {
             </form>
           </th>
           <th>Certificate</th>
+
         </tr>
        </thead>  
        <tbody>
         <?php foreach($people as $person): ?>
           <tr>
+            <?php if($_SESSION['login_flag'] == 2 && isset($_SESSION['CH'])){  ?>
+            <td>
+              <form action='session_m.php' method='post'>
+                  <input type='hidden' name='uid1' value='<?php echo $person->UID;?>' />
+                  <input type='hidden' name='aid' value='<?php echo $person->ID;?>' />
+                  <button class="btn btn-info" onClick='submit();'>Edit</button>  
+              </form>
+            </td>  
+            <?php } ?>
             <td><b>
               <form class="stu" action="../../stu_profile_edit/teacher_view/view_stu_profile.php" method="post">
               <input type="hidden" name="id" value="<?php echo urlencode($person->ID)?>" />
@@ -350,6 +378,7 @@ $('.navbar-light .dmenu').hover(function () {
             <td><?= $person->Date_start; ?></td>   
             <td><?= $person->Date_end; ?></td> 
             <td><a href="../../../file/solo_download.php?ID=<?php echo $person->ID?>&uid=<?php echo $person->UID?>" style="margin:5%;font-size: 14px;" >Download</a></td>
+            
           </tr>
         <?php endforeach; ?>
        </tbody>
@@ -360,7 +389,7 @@ $('.navbar-light .dmenu').hover(function () {
 <?php require 'footer.php'; 
   }else{
     if($_SESSION['login_flag'] == 2){
-        header("location: ../../../Authority_login.html");
+        header("location: ../../../index.html");
         exit;
     }
 

@@ -71,7 +71,7 @@ $people =$_SESSION['people'];
 
 <?php }else{
   if($_SESSION['login_flag'] == 2){
-        header("location: ../../../Authority_login.html");
+        header("location: ../../../index.html");
         exit;
     }
 

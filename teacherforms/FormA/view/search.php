@@ -25,12 +25,12 @@ $print = $_SESSION['print'];
     if($flag==1){
       if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
     	  $sql = 'SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where a.Date_start BETWEEN :DF and :DT';
-      }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+      }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where a.Date_start BETWEEN :DF and :DT AND at.Department ='$Dept'";
       }
     }
     elseif($flag==2){
-      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD'))){
+      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH'])))){
     	 $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where a.Date_start BETWEEN :DF and :DT AND $sql_dept";
       }
       $_SESSION['flag'] = 12;
@@ -54,14 +54,14 @@ elseif(!empty($_POST['regid'])){
   	if($flag==1){
       if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
   		  $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.ID) LIKE UPPER('%$tmp%')";
-      }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+      }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.ID) LIKE UPPER('%$tmp%') AND at.Department ='$Dept'";
 
       }
 
   	}	
   	elseif($flag==2){
-      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD'))){
+      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH'])))){
   		  $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.ID)  LIKE UPPER('%$tmp%') AND $sql_dept";
         }
       $_SESSION['flag'] = 12;
@@ -84,7 +84,7 @@ elseif(!empty($_POST['regid'])){
   	if($flag==1){
       if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
   		  $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Activity) LIKE UPPER('%$tmp%')";
-      }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+      }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Activity) LIKE UPPER('%$tmp%') AND at.Department ='$Dept'";
       }
   	}
@@ -112,12 +112,12 @@ elseif(!empty($_POST['regid'])){
   	if($flag==1){
       if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
   		  $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Title) LIKE UPPER('%$tmp%')";
-      }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+      }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
          $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Title) LIKE UPPER('%$tmp%') AND at.Department ='$Dept'";
       }
   	}
   	elseif($flag==2){
-      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD'))){
+      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH'])))){
   		  $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Title) LIKE UPPER('%$tmp%') AND $sql_dept";
       }
       $_SESSION['flag'] = 12;
@@ -140,12 +140,12 @@ elseif(!empty($_POST['regid'])){
   	if($flag==1){
       if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
   		  $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.State) LIKE UPPER('%$tmp%')";
-      }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+      }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.State) LIKE UPPER('%$tmp%') AND at.Department ='$Dept'";
       }
   	}
   	elseif($flag==2){
-      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD'))){
+      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH'])))){
   		  $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.State) LIKE UPPER('%$tmp%') AND $sql_dept";
       }
       $_SESSION['flag'] = 12;
@@ -169,12 +169,12 @@ elseif(!empty($_POST['regid'])){
   	if($flag==1){
       if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
   		  $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Sponsor) LIKE UPPER('%$tmp%')";
-      }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+      }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Sponsor) LIKE UPPER('%$tmp%') AND at.Department ='$Dept'";
       }
   	}
   	elseif($flag==2){
-      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD'))){
+      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH'])))){
   		  $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Sponsor) LIKE UPPER('%$tmp%') AND $sql_dept";
       }
       $_SESSION['flag'] = 12;
@@ -199,12 +199,12 @@ elseif(!empty($_POST['Participants'])){
     if($flag==1){
       if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Participants) LIKE UPPER('%$tmp%')";
-      }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+      }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Participants) LIKE UPPER('%$tmp%') AND at.Department ='$Dept'";
       }
     }
     elseif($flag==2){
-      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD'))){
+      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH'])))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Participants) LIKE UPPER('%$tmp%') AND $sql_dept";
       }
       $_SESSION['flag'] = 12;
@@ -229,12 +229,12 @@ elseif(!empty($_POST['Coordinator'])){
     if($flag==1){
       if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Coordinator) LIKE UPPER('%$tmp%')";
-      }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+      }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Coordinator) LIKE UPPER('%$tmp%') AND at.Department ='$Dept'";
       }
     }
     elseif($flag==2){
-      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD'))){
+      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH'])))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Coordinator) LIKE UPPER('%$tmp%') AND $sql_dept";
       }
       $_SESSION['flag'] = 12;
@@ -259,12 +259,12 @@ elseif(!empty($_POST['Remarks'])){
     if($flag==1){
       if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  $_SESSION['Desg'] == 'Principal')){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Remarks) LIKE UPPER('%$tmp%')";
-      }else if($_SESSION['login_flag'] == 2 && $_SESSION['Desg'] == 'HOD'){
+      }else if($_SESSION['login_flag'] == 2 && ($_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH']))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Remarks) LIKE UPPER('%$tmp%') AND at.Department ='$Dept'";
       }
     }
     elseif($flag==2){
-      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD'))){
+      if(($_SESSION['login_flag'] == 3) || ($_SESSION['login_flag'] == 2 &&  ($_SESSION['Desg'] == 'Principal' || $_SESSION['Desg'] == 'HOD' || isset($_SESSION['CH'])))){
         $sql = "SELECT a.*,at.Full_Name FROM forma a INNER JOIN Authority at ON a.ID = at.ID where UPPER(a.Remarks) LIKE UPPER('%$tmp%') AND $sql_dept";
       }
       $_SESSION['flag'] = 12;
@@ -291,7 +291,7 @@ else{
 
 }else{
   if($_SESSION['login_flag'] == 2){
-        header("location: ../../../Authority_login.html");
+        header("location: ../../../index.html");
         exit;
     }
 
