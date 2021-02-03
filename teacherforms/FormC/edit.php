@@ -2,34 +2,33 @@
 require 'db.php';
 session_start();
 if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
-    header("location: ../../Authority_login.php");
+    header("location: ../../index.html");
     exit;
 }
 $id = isset($_SESSION['AID']) ? $_SESSION['AID'] : '';
 $uid = isset($_SESSION['uid']) ? $_SESSION['uid'] : '';
 $message = '';
-$sql = 'SELECT * FROM forma WHERE UID=:uid';
+$sql = 'SELECT * FROM formc WHERE UID=:uid';
 $statement = $connection->prepare($sql);
 $statement->execute([':uid' => $uid ]);
 $person = $statement->fetch(PDO::FETCH_OBJ);
 
-if (isset ($_POST['activity'])  && isset($_POST['title']) && isset($_POST['venue']) && isset($_POST['sponsor'])  && isset($_POST['DO']) && isset($_POST['DE']) && isset($_POST['participant']) && isset($_POST['coordinator']) && isset($_POST['remark']) ) {
-  $activity = $_POST['activity'];
+if (isset($_POST['title']) && isset($_POST['type']) && isset($_POST['organiser'])   && isset($_POST['DO']) && isset($_POST['DE'])&& isset($_POST['staff'])  && isset($_POST['sponsorship']) ) {
+  $type = $_POST['type'];
   $title = $_POST['title'];
-  $venue = $_POST['venue'];
-  $sponsor = $_POST['sponsor'];
+  $organiser = $_POST['organiser'];
+  
   $rawdate = $_POST['DO'];
   $rawdate1 = $_POST['DE'];
-  $participant=$_POST['participant'];
-  $coordinator=$_POST['coordinator'];
-  $remark=$_POST['remark'];
+  $staff=$_POST['staff'];
+  
+  $sponsorship=$_POST['sponsorship'];
   $ds = date('Y-m-d',strtotime($rawdate));
   $de = date('Y-m-d',strtotime($rawdate1));
 
-
-   $sql = 'UPDATE forma SET Activity=:activity,Title=:title,State=:venue,Sponsor=:sponsor,Participants=:participant,Coordinator=:coordinator,Remarks=:remark,Date_start=:ds,Date_end=:de WHERE UID=:uid';
+   $sql = 'UPDATE formc SET Title=:title,Type=:type,Organiser=:organiser,Date_start=:ds,Date_end=:de,Staff=:staff,Sponsorship=:sponsorship WHERE UID=:uid';
   $statement = $connection->prepare($sql);
-  if ($statement->execute([':activity' => $activity,':title' => $title,':venue' => $venue,':sponsor' => $sponsor,':participant'=>$participant,':coordinator'=>$coordinator,':remark'=>$remark,':ds' => $ds,':de' => $de, ':uid' => $uid])) {
+  if ($statement->execute([':title' => $title,':type' => $type,':organiser' => $organiser,':ds' => $ds,':de' => $de,':staff'=>$staff,':sponsorship'=>$sponsorship,':uid' => $uid])) {
     header("Location: index.php");
   }
   
@@ -37,7 +36,9 @@ if (isset ($_POST['activity'])  && isset($_POST['title']) && isset($_POST['venue
 else{
      $message = 'data updation Unsuccessful';
   }
-  
+ 
+
+
  ?>
  <html lang="en">
   <head>
@@ -51,7 +52,7 @@ else{
   </head>
   <body class="bg-info">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/projects/Auth_page1.php">Home</a>
+  <a class="navbar-brand" href="../../Authority_Home.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -82,42 +83,38 @@ else{
       <?php endif; ?>
       <form method="post">
         
-        <div class="form-group">
-          <label for="activity">Activity/Event</label>
-          <input value="<?= $person->Activity; ?>" type="text" name="activity" id="activity" class="form-control">
-        </div>
+       
         <div class="form-group">
           <label for="title">Title</label>
           <input value="<?= $person->Title; ?>" type="text" name="title" id="title" class="form-control">
         </div>
+
+         <div class="form-group">
+          <label for="type">Type/Nature</label>
+          <input value="<?= $person->Type; ?>" type="text" name="type" id="type" class="form-control">
+        </div>
+
         <div class="form-group">
-          <label for="venue">State / National / International</label>
-          <input value="<?= $person->State; ?>" type="text" name="venue" id="venue" class="form-control">
+          <label for="organiser">Name of organizer</label>
+          <input value="<?= $person->Organiser; ?>" type="text" name="organiser" id="organiser" class="form-control">
         </div>
+        
          <div class="form-group">
-          <label for="sponsor">Sponsoring Authority</label>
-          <input value="<?= $person->Sponsor; ?>" type="text" name="sponsor" id="sponsor" class="form-control">
-        </div>
-         
-         <div class="form-group">
-          <label for="participant">No. of Participants</label>
-          <input value="<?= $person->Participants; ?>" type="text" name="participant" id="participant" class="form-control">
-        </div>
-         <div class="form-group">
-          <label for="coordinator">Name of the  coordinator</label>
-          <input value="<?= $person->Coordinator; ?>" type="text" name="coordinator" id="coordinator" class="form-control">
-        </div>
-         <div class="form-group">
-          <label for="remark">Remarks</label>
-          <input value="<?= $person->Remarks; ?>" type="text" name="remark" id="remark" class="form-control">
-        </div>
-        <div class="form-group">
           <label for="DO">Start Date</label>
           <input value="<?= $person->Date_start; ?>" type="date" name="DO" id="DO" class="form-control">
         </div>
         <div class="form-group">
           <label for="DE">End Date</label>
           <input value="<?= $person->Date_end; ?>" type="date" name="DE" id="DE" class="form-control">
+        </div>
+         <div class="form-group">
+          <label for="staff">Name of the Staff</label>
+          <input value="<?= $person->Staff; ?>" type="text" name="staff" id="staff" class="form-control">
+        </div>
+        
+         <div class="form-group">
+          <label for="sponsorship">Sponsorship Details</label>
+          <input value="<?= $person->Sponsorship; ?>" type="text" name="sponsorship" id="sponsorship" class="form-control">
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-info">Update data</button>
@@ -128,5 +125,6 @@ else{
 </div>
 
 <?php
+
 require 'footer.php';
 ?>

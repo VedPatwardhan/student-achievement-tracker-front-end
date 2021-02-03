@@ -2,25 +2,27 @@
 require 'db.php';
 session_start();
 if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
-    header("location: ../../Authority_login.php");
+    header("location: ../../index.html");
     exit;
 }
 
 $id = $_SESSION['AID'];
+$_SESSION['type'] = 'formC';
+$_SESSION['flag_file'] = 2; 
 $type ='';
 $desc ='';
 $venue ='';
 $ach ='';
 $uid ='';
-
-        $sql = "SELECT * FROM formA WHERE ID = '$id'";
+        
+        $sql = "SELECT * FROM formC WHERE ID = '$id'";
         $result = mysqli_query ($conn,$sql) or die ('Error');
-         
+        
  ?>
 
 <html lang="en">
   <head>
-    <title>A.	Conferences, Seminars, Symposia, Workshops, FDP, STTP Organized /conducted</title>
+    <title>C.	Teachers Attended Conferences, Seminars, Symposia, Workshops, FDP, STTP etc.</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,7 +32,7 @@ $uid ='';
   </head>
   <body class="bg-info">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/projects/Auth_page1.php">Home</a>
+  <a class="navbar-brand" href="../../Authority_Home.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -46,29 +48,30 @@ $uid ='';
       
     </ul>
   </div>
-
   
 </nav>
 <div class="container">
   <div class="card mt-5">
     <div class="card-header">
-      <h2>Conferences, Seminars, Symposia, Workshops, FDP, STTP Organized</h2>
+      <h2>C. Teachers Attended Conferences, Seminars, Symposia, Workshops, FDP, STTP etc.</h2>
     </div>
     <div class="card-body" style="overflow: scroll;">
       <table class="table table-bordered">
         <tr>
           <th>Sr. No.</th>
-          <th>Activity/Event</th>
+         
           <th>Title</th>
-          <th>State / National / International</th>
-          <th>Sponsoring Authority</th>
-          <th>No. of Participants</th>
-          <th>Name of the  coordinator(s)</th>
-          <th>Remarks</th>
-          <th>Start Date(Y-M-D)</th>
+
+          <th>Type/Nature</th>
+          <th>Name of organizer</th>
+         <th>Start Date(Y-M-D)</th>
           <th>End Date(Y-M-D)</th>
-          <th> </th>
-          <th> Upload Certificate</th>
+          <th>Name of the Staff</th>
+          
+          
+          <th>Sponsorship Details </th>
+           <th> </th>
+            <th> Upload Certificate</th>
         </tr>
          <?php if (mysqli_num_rows($result) > 0) {
   		$cnt=0;
@@ -76,41 +79,40 @@ $uid ='';
         		$cnt=$cnt+1;
        ?>
         <tr>
-            <td><?php echo $cnt;?></td>
+            <td><?php echo $cnt?></td>
                <?php $uid = $row ['UID'];?>
-            <td><?php echo $row ['Activity'];?></td>
-
+          
             <td><?php echo $row ['Title'];?></td>
+
+              <td><?php echo $row ['Type'];?>
+             
+            </td>
            
-            <td><?php echo $row ['State'];?></td>
-
-            <td><?php echo $row ['Sponsor'];?></td>
-
-            <td><?php echo $row ['Participants'];?></td>
-
-            <td><?php echo $row ['Coordinator'];?></td>
-
-            <td><?php echo $row ['Remarks'];?></td>
-
-            <td><?php echo $row ['Date_start'];?></td>
+            <td><?php echo $row ['Organiser'];?>
+              
+            </td>
+        
+              
+            
+              <td><?php echo $row ['Date_start'];?></td>
 
             <td><?php echo $row ['Date_end'];?></td>
-            
-            <td>
+             <td><?php echo $row ['Staff'];?></td>
+               <td><?php echo $row ['Sponsorship'];?></td>
+                <td>
               <form action='session_m.php' method='post'>
                   <input type='hidden' name='uid1' value='<?php echo $row ['UID'];?>' />
                   <button class="btn btn-info" onClick='submit();'>Edit</button>
   
               </form>
-          
+           <!-- <a href="edit.php?uid=<?php echo urlencode($uid) ?>" style="margin:5%;" class="btn btn-info">Edit</a>-->
             <form action='delete.php' method='post'>
                   <input type='hidden' name='uid2' value='<?php echo $row ['UID'];?>' />
                   <button type="submit" class="btn btn-danger" onClick="return confirm('Are you sure you want to delete this entry?')">Delete</button>
   
               </form>
             </td>
-               
-            <?php  
+                <?php  
 
                   $sql1 = "SELECT * FROM files WHERE ID = '$id' and UID='$uid'";
                   $result1 = mysqli_query ($conn,$sql1) or die ('Error');
@@ -119,22 +121,23 @@ $uid ='';
             ?>
 
             <td>
-              <form  action="../../file/filesLogic.php?uid=<?php echo $uid?>&type=formA&flag_file=2" method="post" enctype="multipart/form-data" > 
+              <form  action="../../file/filesLogic.php?uid=<?php echo $uid?>&type=formC&flag_file=2" method="post" enctype="multipart/form-data" > 
                   <input type="file" name="myfile" id="file" >
                    <button style="margin:5%;" type="submit" name="save" class="btn btn-info">Submit</button>
               </form>
             </td>  
             <?php }else{ ?>
-            <td >  
+
+            <td>  
               <div>                        
-                <form action="../../file/filesLogic.php?uid=<?php echo $uid?>&type=formA&flag_file=2" method="post" enctype="multipart/form-data" >
-                 <a href="../../file/solo_download.php?uid=<?php echo $uid?>&type=formA&flag_file=2" style="margin:5%;" class="btn btn-info">Download latest copy</a>
+                <form action="../../file/filesLogic.php?uid=<?php echo $uid?>&type=formC&flag_file=2" method="post" enctype="multipart/form-data" >
+                 <a href="../../file/solo_download.php?uid=<?php echo $uid?>&type=formC&flag_file=2" style="margin:5%;" class="btn btn-info">Download latest copy</a>
                   <input type="file" name="myfile" >
                   <button style="margin-top:5%;" type="submit" name="save1" class="btn btn-info">Upload New</button>
                 </form>
               </div>
-            </td>
-            <?php } ?>   
+            </td> 
+            <?php } ?> 
                
         </tr>
          <?php }
@@ -147,5 +150,6 @@ $uid ='';
   </div>
 </div>
 <?php
+
 require 'footer.php';
 ?>

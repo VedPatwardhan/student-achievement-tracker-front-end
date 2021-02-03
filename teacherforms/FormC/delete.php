@@ -2,20 +2,20 @@
 require 'db.php';
 session_start();
 if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
-    header("location: ../../Authority_login.php");
+    header("location: ../../index.html");
     exit;
 }
 $id = $_SESSION['AID'];
 $uid = isset($_POST['uid2']) ? $_POST['uid2'] : '';
-$type = 'formA';
+$type = 'formC';
 
 $sql1 = "SELECT * FROM files WHERE ID = '$id' and UID='$uid'";
     $result1 = mysqli_query ($conn,$sql1) or die ('Error');
     if(mysqli_num_rows($result1)!=0)
     {
 
-$sql = 'DELETE forma,files FROM forma INNER JOIN files  ON forma.UID = files.UID  WHERE forma.ID=:id AND forma.UID=:uid';
-
+$sql = 'DELETE formc,files FROM formc INNER JOIN files  ON formc.UID = files.UID  WHERE formc.ID=:id AND formc.UID=:uid';
+$dir_handle = '';
 $statement = $connection->prepare($sql);
 if ($statement->execute([':id' => $id,':uid' => $uid])) {
 
@@ -42,12 +42,12 @@ else{
 
 
 }else{
-	echo "2";
+  echo "2";
 
-	$sql = 'DELETE FROM forma WHERE ID=:id and UID=:uid';
-	$statement = $connection->prepare($sql);
-	if ($statement->execute([':id' => $id,':uid' => $uid])) {
-		header("Location: index.php");
-	}
+  $sql = 'DELETE FROM formc WHERE ID=:id and UID=:uid';
+  $statement = $connection->prepare($sql);
+  if ($statement->execute([':id' => $id,':uid' => $uid])) {
+    header("Location: index.php");
+  }
 
 }

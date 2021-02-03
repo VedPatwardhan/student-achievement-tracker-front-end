@@ -2,30 +2,28 @@
 require 'db.php';
 session_start();
 if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
-    header("location: ../../Authority_login.php");
+    header("location: ../../index.html");
     exit;
 }
 $id = $_SESSION['AID'];
 
 $filename='';
 
-if (isset ($_POST['activity'])  && isset($_POST['title']) && isset($_POST['venue']) && isset($_POST['sponsor'])  && isset($_POST['DO']) && isset($_POST['DE']) && isset($_POST['participant']) && isset($_POST['coordinator']) && isset($_POST['remark']) ) {
-  $activity = $_POST['activity'];
+if (isset($_POST['title']) && isset($_POST['type']) && isset($_POST['organiser'])   && isset($_POST['DO']) && isset($_POST['DE'])&& isset($_POST['staff'])  && isset($_POST['sponsorship']) ) {
+  $type = $_POST['type'];
   $title = $_POST['title'];
-  $venue = $_POST['venue'];
-  $sponsor = $_POST['sponsor'];
-  $rawdate = $_POST['DO'];
-  $rawdate1 = $_POST['DE'];
-  $currdate=date("Y-m-d");
-  $participant=$_POST['participant'];
-  $coordinator=$_POST['coordinator'];
-  $remark=$_POST['remark'];
+  $organiser = $_POST['organiser'];
+ $rawdate = $_POST['DO'];
+   $rawdate1 = $_POST['DE'];
+  $staff=$_POST['staff'];
+  
+  $sponsorship=$_POST['sponsorship'];
   $ds = date('Y-m-d',strtotime($rawdate));
   $de = date('Y-m-d',strtotime($rawdate1));
-  $uid = uniqid("FA-");
-  $sql = 'INSERT INTO formA(UID,ID,Activity,Title,State,Sponsor,Participants,Coordinator,Remarks,Date_start,Date_end) VALUES(:uid,:id,:activity,:title,:venue,:sponsor,:dob,:participant,:coordinator,:remark,:ds,:de)';
+  $uid = uniqid("FC-");
+  $sql = 'INSERT INTO formc(UID,ID,Title,Type,Organiser,Date_start,Date_end,Staff,Sponsorship) VALUES(:uid,:id,:title,:type,:organiser,:ds,:de,:staff,:sponsorship)';
   $statement = $connection->prepare($sql);
-  if ($statement->execute([':uid' => $uid,':id' => $id,':activity' => $activity,':title' => $title,':venue' => $venue,':sponsor' => $sponsor,':participant'=>$participant,':coordinator'=>$coordinator,':remark'=>$remark,':ds'=>$ds,':de'=>$de])) {
+  if ($statement->execute([':uid' => $uid,':id' => $id,':title' => $title,':type' => $type,':organiser' => $organiser,':ds'=>$ds,':de'=>$de,':staff'=>$staff,':sponsorship'=>$sponsorship])) {
     $message = 'data inserted successfully';
   }
   
@@ -33,6 +31,10 @@ if (isset ($_POST['activity'])  && isset($_POST['title']) && isset($_POST['venue
 else{
     $message = 'data insertion Unsuccessful';
   }
+
+// Uploads files
+
+
 
 ?>
 
@@ -48,7 +50,7 @@ else{
   </head>
   <body class="bg-info">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/projects/Auth_page1.php">Home</a>
+  <a class="navbar-brand" href="../../Authority_Home.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -68,7 +70,7 @@ else{
 <div class="container">
   <div class="card mt-5">
     <div class="card-header">
-      <h2>Add Seminars, Symposia, Workshops Data</h2>
+      <h2>Teachers Attended Conferences, Seminars, Symposia, Workshops, FDP, STTP etc.</h2>
     </div>
     <div class="card-body">
       <?php if(!empty($message)): ?>
@@ -77,16 +79,19 @@ else{
         </div>
       <?php endif; ?>
      
-       <form  action="../../file/filesLogic.php?uid=<?php echo $uid?>&type=formA&flag_file=2" method="post" enctype="multipart/form-data" > 
+       <form  action="../../file/filesLogic.php?uid=<?php echo $uid?>&type=formC&flag_file=2" method="post" enctype="multipart/form-data" > 
                   <input type="file" name="myfile" id="file" >
                    <button style="margin:5%;" type="submit" name="save" class="btn btn-info">Submit</button>
-        </form> 
+       </form> 
              
+
+        
       </form>
     </div>
   </div>
 </div>
 
 <?php
+
 require 'footer.php';
 ?>

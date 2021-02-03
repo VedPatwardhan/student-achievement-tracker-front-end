@@ -2,7 +2,7 @@
 require 'db.php';
 session_start();
 if(!isset($_SESSION["login_auth"]) || $_SESSION["login_auth"] !== true){
-    header("location: ../../Authority_login.php");
+    header("location: ../../index.html");
     exit;
 }
 $id = $_SESSION['AID'];
@@ -21,7 +21,7 @@ $id = $_SESSION['AID'];
   </head>
   <body class="bg-info">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/projects/Auth_page1.php">Home</a>
+  <a class="navbar-brand" href="../../Authority_Home.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -41,7 +41,8 @@ $id = $_SESSION['AID'];
 <div class="container">
   <div class="card mt-5">
     <div class="card-header">
-      <h2>Add Seminars, Symposia, Workshops Data</h2>
+      <h2>Teachers Attended Conferences, Seminars, Symposia, Workshops, FDP, STTP etc.
+</h2>
     </div>
     <div class="card-body">
       <?php if(!empty($message)): ?>
@@ -49,38 +50,25 @@ $id = $_SESSION['AID'];
           <?= $message; ?>
         </div>
       <?php endif; ?>
-      <form method="post" action="/projects/teacherforms/formA/file_entry.php">
+      <form method="post" action="/projects/teacherforms/FormC/file_entry.php">
         
-        <div class="form-group">
-          <label for="activity">Activity/Event</label>
-          <input type="text" name="activity" id="activity" class="form-control">
-        </div>
+       
         <div class="form-group">
           <label for="title">Title</label>
           <input type="text" name="title" id="title" class="form-control">
         </div>
+
+         <div class="form-group">
+          <label for="type">Type/Nature</label>
+          <input type="text" name="type" id="type" class="form-control">
+        </div>
+
         <div class="form-group">
-          <label for="venue">State / National / International</label>
-          <input type="text" name="venue" id="venue" class="form-control">
+          <label for="organiser">Name of organizer</label>
+          <input type="text" name="organiser" id="organiser" class="form-control">
         </div>
+        
          <div class="form-group">
-          <label for="sponsor">Sponsoring Authority</label>
-          <input type="text" name="sponsor" id="sponsor" class="form-control">
-        </div>
-         
-         <div class="form-group">
-          <label for="participant">No. of Participants</label>
-          <input type="text" name="participant" id="participant" class="form-control">
-        </div>
-         <div class="form-group">
-          <label for="coordinator">Name of the  Coordinator/'s</label>
-          <input type="text" placeholder="Add all names seperated by comma" name="coordinator" id="coordinator" class="form-control">
-        </div>
-         <div class="form-group">
-          <label for="remark">Remark</label>
-          <input type="text" name="remark" id="remark" class="form-control">
-        </div>
-        <div class="form-group">
           <label for="DO">Start Date</label>
           <input type="date" name="DO" id="DO" class="form-control">
         </div>
@@ -88,6 +76,17 @@ $id = $_SESSION['AID'];
           <label for="DE">End Date</label>
           <input type="date" name="DE" id="DE" class="form-control">
         </div>
+
+         <div class="form-group">
+          <label for="staff">Name of the Staff</label>
+          <input type="text" name="staff" id="staff" class="form-control">
+        </div>
+        
+         <div class="form-group">
+          <label for="sponsorship">Sponsorship Details</label>
+          <input type="text" name="sponsorship" id="sponsorship" class="form-control">
+        </div>
+    
 
         <div class="form-group">
           <button type="submit" class="btn btn-info">Upload Document Proof</button>
@@ -98,5 +97,6 @@ $id = $_SESSION['AID'];
 </div>
 
 <?php
+
 require 'footer.php';
 ?>
